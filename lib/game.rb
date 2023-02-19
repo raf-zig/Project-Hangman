@@ -5,27 +5,25 @@ word = words.sample.chomp
 
 secret_word = word.split('')
 print secret_word
-guessed_word = secret_word.map { |l|  '_ '}.join
-print guessed_word
+#guessed_word = secret_word.map { |l|  '_ '}.join
+guessed_word = secret_word.map { |l|  '_ '}
+print guessed_word.join
 
-score = 0
+
 bad_letters = []
-good_letters = []
 
-def user_choice (secret_word, score, bad_letters, good_letters)
+
+def user_choice (secret_word, bad_letters, guessed_word)
   user_letter = gets.downcase.chomp
-  if secret_word.include?(user_letter)
-    good_letters << user_letter
-    score += 1
-    puts good_letters
-    puts score
-  else
+  secret_word.each_with_index do |letter, index|
+    if letter == user_letter
+      guessed_word[index] = user_letter
+    else
     bad_letters << user_letter
-    score +=1
-    puts bad_letters
-    puts score
+    end
   end
 end
-user_choice(secret_word, score, bad_letters, good_letters)
-puts good_letters
-puts score
+
+user_choice(secret_word, bad_letters, guessed_word)
+
+puts guessed_word.join
