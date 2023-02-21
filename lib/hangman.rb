@@ -1,6 +1,5 @@
 require 'yaml'
 require_relative 'game.rb'
-require_relative 'print.rb'
 
 def save_game(secret_word, guessed_word, score, bad_letters, good_letters)
   puts 'Do you want to save the game? (y/n)'
@@ -9,7 +8,7 @@ def save_game(secret_word, guessed_word, score, bad_letters, good_letters)
     file.puts YAML.dump data
   end
 end
-save_game(['k', 'f'], ['g', 'r'], 5, ['w', 'v'], ['s', 'q'])
+#save_game(['k', 'f'], ['g', 'r'], 5, ['w', 'v'], ['s', 'q'])
 
 def continue_game
   data = YAML.load File.read('test1.yaml') 
@@ -21,7 +20,7 @@ def continue_game
   print good_letters
 end
 
-continue_game
+#continue_game
 
 
 
