@@ -4,12 +4,8 @@ lines = File.readlines('google-10000-english-no-swears.txt')
 words = []
 lines.each { |line| words << line if line.length > 5 and line.length < 12}
 word = words.sample.chomp
-
 secret_word = word.split('')
-puts secret_word.join
 guessed_word = secret_word.map { |l|  '_ '}
-puts guessed_word.join
-puts
 bad_letters = []
 
 def user_choice
@@ -32,17 +28,31 @@ def check_result(secret_word, bad_letters, guessed_word, user_choice)
 end
 
 i = 0
-while i < 4 do
-  i += 1
+puts 'Do you want to open a saved game? y/n'
+open_game = gets.downcase.chomp
+if open_game == 'y'
+  saved_game_data = continue_game
+  secret_word = saved_game_data[0]
+  guessed_word = saved_game_data[1]
+  i = saved_game_data[2] 
+  bad_letters = saved_game_data[3]
+end
+
+while i < 7 do
+   
   puts 'Would you like to save the game? y/n'
   save_game = gets.downcase.chomp
   if save_game == 'y'
     save_game(secret_word, guessed_word, i, bad_letters)
     break
   end
+  i += 1
+  puts secret_word.join
+  puts 'Guess the hidden word'
+  puts guessed_word.join
   puts 'Enter word:'
   check_result(secret_word, bad_letters, guessed_word, user_choice)
   puts guessed_word.join
   puts "Errors - #{bad_letters.join}"
-  puts "There are still attempts left - #{4-i}"
+  puts "There are still attempts left - #{7-i}"
 end
