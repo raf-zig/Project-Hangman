@@ -1,3 +1,4 @@
+require_relative 'hangman.rb'
 
 lines = File.readlines('google-10000-english-no-swears.txt')
 words = []
@@ -11,9 +12,16 @@ puts guessed_word.join
 puts
 bad_letters = []
 
-def user_choice (secret_word, bad_letters, guessed_word)
-  puts 'Enter word: '
-  user_letter = gets.downcase.chomp
+def user_choice
+  letter = ''
+  while letter == ''
+    letter = gets.downcase.chomp
+  end 
+  return letter
+end
+
+def check_result(secret_word, bad_letters, guessed_word, user_choice)
+  user_letter = user_choice
   secret_word.each_with_index do |letter, index|
     if letter == user_letter
       guessed_word[index] = user_letter
@@ -25,12 +33,13 @@ def user_choice (secret_word, bad_letters, guessed_word)
 end
 
 i = 0
-while i < 8 do
-  user_choice(secret_word, bad_letters, guessed_word)
+while i < 4 do
   i += 1
+  puts 'Enter word:'
+  check_result(secret_word, bad_letters, guessed_word, user_choice)
   puts 'Would you like to save the game? y/n'
   user_letter = gets.downcase.chomp
   puts guessed_word.join
   puts "Errors - #{bad_letters.join}"
-  puts "There are still attempts left - #{8-i}"
+  puts "There are still attempts left - #{4-i}"
 end

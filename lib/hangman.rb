@@ -1,5 +1,4 @@
 require 'yaml'
-require_relative 'game.rb'
 
 def save_game(secret_word, guessed_word, score, bad_letters, good_letters)
   puts 'Do you want to save the game? (y/n)'
