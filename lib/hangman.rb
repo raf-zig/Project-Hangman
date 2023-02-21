@@ -9,12 +9,7 @@ end
 
 def continue_game
   data = YAML.load File.read('test1.yaml') 
-  secret_word, guessed_word, i, bad_letters = data[0], data[1], data[2], data[3]
-  print secret_word
-  print guessed_word
-  print i
-  print bad_letters
- 
+  #secret_word, guessed_word, i, bad_letters = data[0], data[1], data[2], data[3]
 end
 
 
