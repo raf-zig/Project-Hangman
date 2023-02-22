@@ -1,5 +1,4 @@
 require_relative 'hangman.rb'
-require_relative 'print'
 
 lines = File.readlines('google-10000-english-no-swears.txt')
 words = []
@@ -28,8 +27,6 @@ def check_result(secret_word, bad_letters, guessed_word, user_choice)
   end
 end
 
-
-
 i = 0
 puts 'Do you want to open a saved game? y/n'
 open_game = gets.downcase.chomp
@@ -38,7 +35,6 @@ if open_game == 'y'
   secret_word = saved_game_data[0]
   guessed_word = saved_game_data[1]
   i = saved_game_data[2] 
-
   bad_letters = saved_game_data[3]
 end
 
@@ -51,15 +47,12 @@ while i < 7 do
     break
   end
   i += 1
-  
-  
-  puts secret_word.join,
-      'Guess the hidden word',
-       guessed_word.join
-  print 'Enter word: '
+  puts secret_word.join
+  puts 'Guess the hidden word'
+  puts guessed_word.join
+  puts 'Enter word:'
   check_result(secret_word, bad_letters, guessed_word, user_choice)
-  #puts guessed_word.join
-  puts "Errors - #{bad_letters.join(' ')}"
-  print(bad_letters.size)
+  puts guessed_word.join
+  puts "Errors - #{bad_letters.join}"
   puts "There are still attempts left - #{7-i}"
 end
