@@ -1,4 +1,5 @@
-require_relative 'hangman.rb'
+require_relative 'hangman'
+require_relative 'print_image'
 
 lines = File.readlines('google-10000-english-no-swears.txt')
 words = []
@@ -37,9 +38,9 @@ if open_game == 'y'
   i = saved_game_data[2] 
   bad_letters = saved_game_data[3]
 end
-
+puts 'You have 7 attempts to guess the word. The game continues up to 7 errors',
 while i < 7 do
-   
+  
   puts 'Would you like to save the game? y/n'
   save_game = gets.downcase.chomp
   if save_game == 'y'
@@ -47,12 +48,14 @@ while i < 7 do
     break
   end
   i += 1
-  puts secret_word.join
-  puts 'Guess the hidden word'
-  puts guessed_word.join
-  puts 'Enter word:'
+  
+        secret_word.join,
+        'Guess the hidden word',
+        guessed_word.join
+  print 'Enter word: '
   check_result(secret_word, bad_letters, guessed_word, user_choice)
-  puts guessed_word.join
-  puts "Errors - #{bad_letters.join}"
-  puts "There are still attempts left - #{7-i}"
+  puts "Errors - #{bad_letters.join('  ')}"
+  print_man(bad_letters.size) 
+  puts  guessed_word.join,
+       "There are still attempts left - #{7-i}"
 end
