@@ -1,4 +1,4 @@
-require_relative 'hangman'
+require_relative 'saved_game'
 require_relative 'print_image'
 
 lines = File.readlines('google-10000-english-no-swears.txt')
