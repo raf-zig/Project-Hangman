@@ -8,8 +8,8 @@ def save_game(secret_word, guessed_word, i, bad_letters)
 end
 
 def continue_game
-  if File.exists?('test.yaml')
-    data = YAML.load File.read('test.yaml') 
+  if File.exist?('test.yaml')
+    YAML.load File.read('test.yaml') 
   else
     puts 'The file is missing'
     abort

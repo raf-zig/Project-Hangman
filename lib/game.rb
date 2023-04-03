@@ -3,10 +3,10 @@ require_relative 'print_image'
 
 lines = File.readlines('google-10000-english-no-swears.txt')
 words = []
-lines.each { |line| words << line if line.length > 5 and line.length < 12}
-_words = words.sample.chomp
-secret_word = _words.split('')
-guessed_word = secret_word.map { |l|  '_ '}
+lines.each { |line| words << line if line.length > 5 and line.length < 12 }
+word = words.sample.chomp
+secret_word = word.split('')
+guessed_word = secret_word.map { '_ ' }
 bad_letters = []
 
 def user_choice
