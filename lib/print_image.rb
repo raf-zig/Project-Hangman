@@ -1,34 +1,36 @@
+# frozen_string_literal: true
+
 def print_man(i)
   case i
   when 1
     puts '
      |
     ( )'
-  when 2 
+  when 2
     puts '
      |
     ( )
      |'
-  when 3 
+  when 3
     puts '
      |
     ( )
      |
       \\'
-  when 4 
+  when 4
     puts '
      |
     ( )
      |
     / \\'
-  when 5 
+  when 5
     puts '
      |
     ( )
      |
     /|\
      |'
-  when 6 
+  when 6
     puts '
      |
     ( )
@@ -36,8 +38,8 @@ def print_man(i)
     /|\
      |
       \\'
-  when 7 
-   puts ' 
+  when 7
+    puts '
      |
     ( )
      |
